@@ -26,3 +26,4 @@ function groupAnagrams(strs: string[]): string[][] {
 const strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
 groupAnagrams(strs)
 // Output: [["bat"],["nat","tan"],["ate","eat","tea"]
+export {}

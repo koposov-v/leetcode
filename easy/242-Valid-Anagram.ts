@@ -1,8 +1,17 @@
 function isAnagram(s: string, t: string): boolean {
-  if (s.length !== t.length) return false
-  s = s.split('').sort().join()
-  t = t.split('').sort().join()
-  return s === t
+  /**
+   * Первое решение
+   */
+
+  // if (s.length !== t.length) return false
+  // s = s.split('').sort().join()
+  // t = t.split('').sort().join()
+  // return s === t
+
+
+  /**
+   * Второе решение
+   */
 
 
   const mapS = new Map<string, number>()

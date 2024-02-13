@@ -21,8 +21,9 @@ function topKFrequent(nums: number[], k: number): number[] {
   console.log(newArr)
   return newArr
 }
-
 // const nums = [1, 1, 1, 2, 2, 3], k = 2
 const nums = [1,2], k = 2
 topKFrequent(nums, k)
 // Output: [1,2]
+
+export {}
