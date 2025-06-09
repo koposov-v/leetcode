@@ -1,9 +1,10 @@
 package main
 
+import "fmt"
+
 func main() {
 	mat := [][]int{{67, 64, 78}, {99, 98, 38}, {82, 46, 46}, {6, 52, 55}, {55, 99, 45}}
-	matrixBlockSum(mat, 3)
-
+	fmt.Println(matrixBlockSum(mat, 3))
 }
 
 func matrixBlockSum(mat [][]int, k int) [][]int {
