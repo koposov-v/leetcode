@@ -1,31 +1,66 @@
-// Created by Vyacheslav Koposov at 2025/06/08 13:06
-// leetgo: 1.4.13
-// https://leetcode.cn/problems/search-in-rotated-sorted-array/
-
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"os"
+import "fmt"
 
-	. "github.com/j178/leetgo/testutils/go"
-)
+func search(nums []int, target int) int {
+	left, right := 0, len(nums)-1
 
-// @lc code=begin
+	for left <= right {
+		mid := (left + right) / 2
+		cur := nums[mid]
+		leftValue := nums[left]
+		rightValue := nums[right]
 
-func search(nums []int, target int) (ans int) {
+		if cur == target {
+			return mid
+		}
 
-	return
+		if leftValue <= cur {
+			if leftValue <= target && target < cur {
+				right = mid - 1
+			} else {
+				left = mid + 1
+			}
+		} else {
+			if cur < target && cur <= rightValue {
+				left = mid + 1
+			} else {
+				right = mid - 1
+			}
+		}
+	}
+
+	return -1
 }
 
-// @lc code=end
+type Res struct {
+	input  []int
+	target int
+	res    int
+}
 
 func main() {
-	stdin := bufio.NewReader(os.Stdin)
-	nums := Deserialize[[]int](ReadLine(stdin))
-	target := Deserialize[int](ReadLine(stdin))
-	ans := search(nums, target)
-
-	fmt.Println("\noutput:", Serialize(ans))
+	testCases := []Res{
+		{
+			[]int{4, 5, 6, 7, 0, 1, 2},
+			0,
+			4,
+		},
+		{
+			[]int{4, 5, 6, 7, 0, 1, 2},
+			3,
+			-1,
+		},
+		{
+			[]int{1},
+			0,
+			-1,
+		},
+	}
+	for i, tt := range testCases {
+		res := search(tt.input, tt.target)
+		if res != tt.res {
+			fmt.Printf("Test-%d, Ожидали %d, а получили %d\n", i, tt.res, res)
+		}
+	}
 }
